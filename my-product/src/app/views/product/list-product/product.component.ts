@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
   getAllProduct = () => {
     this.productService.getAllProduct()
     .then(response => {
-      console.log(response);
+      // console.log(response);
       this.products = response;
     })
     .catch(error => {
@@ -31,7 +31,7 @@ export class ProductComponent implements OnInit {
     if(confirm('Are you sure?')) {
       this.productService.deleteProductById(id).subscribe(res =>{
         this.getAllProduct();
-        console.log(res);
+        // console.log(res);
       })
     }
   }

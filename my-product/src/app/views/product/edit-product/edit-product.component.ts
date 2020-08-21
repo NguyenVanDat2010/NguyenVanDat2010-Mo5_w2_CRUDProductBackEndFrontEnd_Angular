@@ -54,7 +54,7 @@ export class EditProductComponent implements OnInit {
   getAllCategories = () => {
     this.categoryService.getAllCategories()
     .then(response => {
-      console.log(response);
+      // console.log(response);
       this.categories = response;
     })
     .catch(error => {

@@ -17,11 +17,11 @@ const routes: Routes = [
     component: CreateProductComponent
   },
   {
-    path: ':id',
+    path: 'edit/:id',
     component: EditProductComponent
   },
   {
-    path: ':id',
+    path: 'detail/:id',
     component: DetailProductComponent
   }
 ];

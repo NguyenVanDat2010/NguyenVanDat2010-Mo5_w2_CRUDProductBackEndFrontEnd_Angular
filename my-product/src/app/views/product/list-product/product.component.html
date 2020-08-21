@@ -27,10 +27,10 @@
             <td>{{item.quantity}}</td>
             <td>{{item.price | number}}</td>
             <td>{{item.category.name}}</td>
-            <td><button class="btn btn-secondary" [routerLink] = "['/products',item.id]" (click)="showEditProductForm(item.id)">Edit</button></td>
+            <td><button class="btn btn-secondary" [routerLink] = "['/products/edit',item.id]" >Edit</button></td>
             <!-- <app-edit-product [idProduct]= "item.id"></app-edit-product> -->
             <td><button class="btn btn-danger" (click) = "deleteProduct(item.id)">Delete</button></td>
-            <td><button class="btn btn-info" [routerLink] = "['/products', item.id]">Detail</button></td>
+            <td><button class="btn btn-info" [routerLink] = "['/products/detail', item.id]">Detail</button></td>
           </tr>
         </tbody>
       </table>

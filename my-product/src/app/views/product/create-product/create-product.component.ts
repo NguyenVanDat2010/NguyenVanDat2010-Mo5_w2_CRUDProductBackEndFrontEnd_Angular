@@ -35,7 +35,7 @@ export class CreateProductComponent implements OnInit {
   getAllCategories = () => {
     this.categoryService.getAllCategories()
     .then(response => {
-      console.log(response);
+      // console.log(response);
       this.categories = response;
     })
     .catch(error => {
@@ -45,7 +45,7 @@ export class CreateProductComponent implements OnInit {
 
   createProduct() {
     let data = this.createProductForm.value;
-    console.log(data)
+    // console.log(data)
       this.productService.createProduct(data).subscribe(res =>{
         this.route.navigate(['/products'])
       })
