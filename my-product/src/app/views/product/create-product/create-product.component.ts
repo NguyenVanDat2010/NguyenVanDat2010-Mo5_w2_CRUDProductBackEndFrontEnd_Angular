@@ -33,7 +33,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   getAllCategories = () => {
-    this.productService.getCategories()
+    this.categoryService.getAllCategories()
     .then(response => {
       console.log(response);
       this.categories = response;

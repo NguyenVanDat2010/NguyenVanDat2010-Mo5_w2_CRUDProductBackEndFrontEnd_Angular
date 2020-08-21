@@ -24,16 +24,4 @@ export class ProductService {
     return this.http.post<any>(environment.URL + '/products/create', data)
   }
 
-
-  getCategories = (): Promise<Object> =>{
-    return new Promise((resolve, reject) => {
-      let url = "http://localhost:8080/categories";
-      this.http.get(url).subscribe(res =>{
-        resolve(res);
-      }, err => {
-        reject(err);
-      })
-    })
-  }
-
 }

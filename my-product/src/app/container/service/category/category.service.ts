@@ -15,5 +15,15 @@ export class CategoryService {
     return this.http.get(environment.URL+"/categoties/"+id);
   }
 
+  getAllCategories = (): Promise<Object> =>{
+    return new Promise((resolve, reject) => {
+      let url = "http://localhost:8080/categories";
+      this.http.get(url).subscribe(res =>{
+        resolve(res);
+      }, err => {
+        reject(err);
+      })
+    })
+  }
 }
 
