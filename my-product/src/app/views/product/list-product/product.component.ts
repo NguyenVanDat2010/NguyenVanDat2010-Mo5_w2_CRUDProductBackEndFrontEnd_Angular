@@ -20,11 +20,17 @@ export class ProductComponent implements OnInit {
     .then(response => {
       console.log(response);
       this.products = response;
-      debugger
     })
     .catch(error => {
       console.log("Error to get all categories!");
     });
+  }
+
+  deleteProduct(id:number){
+    this.productService.deleteProduct(id).subscribe(res =>{
+      this.getAllProduct();
+      console.log(res);
+    })
   }
 
 }

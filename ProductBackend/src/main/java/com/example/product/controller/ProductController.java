@@ -32,11 +32,20 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Iterable<Product>> insertProduct(@RequestBody Product product){
+    public ResponseEntity<Product> insertProduct(@RequestBody Product product){
         if (product == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         productService.save(product);
+        return new ResponseEntity<>( HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Product> deleteProduct(@PathVariable Long id){
+        if (id == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        productService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

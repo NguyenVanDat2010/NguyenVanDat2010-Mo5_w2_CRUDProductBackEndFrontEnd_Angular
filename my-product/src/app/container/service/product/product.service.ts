@@ -24,4 +24,8 @@ export class ProductService {
     return this.http.post<any>(environment.URL + '/products/create', data)
   }
 
+  deleteProduct(id: number): Observable<any>{
+    return this.http.delete<any>(environment.URL+"/products/"+id);
+  }
+
 }
