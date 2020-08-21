@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit {
       debugger
     })
     .catch(error => {
-
+      console.log("Error to get all categories!");
     });
   }
 

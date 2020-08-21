@@ -9,15 +9,14 @@ import { FormControlName, FormGroup, FormBuilder, Validators } from '@angular/fo
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-  idCategory;
 
   constructor(private productService: ProductService,
              private fb: FormBuilder, private categoryService: CategoryService) { }
   categories: any;
   createProductForm: FormGroup;
+
   ngOnInit(): void {
     this.getAllCategories();
-
 
     this.createProductForm = this.fb.group({
       name : ['', [Validators.required]],
@@ -28,8 +27,6 @@ export class CreateProductComponent implements OnInit {
       })
     })
 
-    console.log(this.idCategory);
-
   }
 
   getAllCategories = () => {
@@ -39,7 +36,7 @@ export class CreateProductComponent implements OnInit {
       this.categories = response;
     })
     .catch(error => {
-
+      console.log("Error to get all categories!");
     });
   }
 
@@ -50,6 +47,23 @@ export class CreateProductComponent implements OnInit {
         console.log(res)
       })
   }
+
+  // createProduct() {
+  //   let data = this.createProductForm.value;
+  //   console.log(data)
+  //   let product = {
+  //     name: data.name,
+  //     quantity: data.quantity,
+  //     price: data.price,
+  //     categogy: {
+  //         id: data.category
+  //     }
+  //   }
+  //  // data.category.id = data.category;
+  //     // this.productService.createProduct(product).subscribe(res =>{
+  //     //   console.log(res)
+  //     // })
+  // }
 
   get name(){
     return this.createProductForm.get('name')
