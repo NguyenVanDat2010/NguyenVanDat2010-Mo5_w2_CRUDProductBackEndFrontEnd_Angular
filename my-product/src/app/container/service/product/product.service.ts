@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   createProduct(data: any): Observable<any> {
-      return this.http.post<any>(environment.URL + '/products/create', data)
+    return this.http.post<any>(environment.URL + '/products/create', data)
   }
 
 

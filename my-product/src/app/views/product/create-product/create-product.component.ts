@@ -23,8 +23,7 @@ export class CreateProductComponent implements OnInit {
       name : ['', [Validators.required]],
       quantity : ['', [Validators.required]],
       price : ['',[Validators.required]],
-      category:
-      this.fb.group({
+      category: this.fb.group({
         id: ['']
       })
     })
@@ -46,29 +45,14 @@ export class CreateProductComponent implements OnInit {
 
   createProduct() {
     let data = this.createProductForm.value;
-
-   // data.category.id = data.category;
     console.log(data)
-    //   this.productService.createProduct(data).subscribe(res =>{
-    //     console.log(res)
-    //   })
+      this.productService.createProduct(data).subscribe(res =>{
+        console.log(res)
+      })
   }
 
   get name(){
     return this.createProductForm.get('name')
   }
-
-  // public getCategory(){
-  //   this.categoryService.getCategory(this.idCategory)
-  //           .subscribe((data: CourseSlot) => {
-  //               this.allSalleEtb = data.salle; // set all data here
-  //               this.selectedSalle = this.allSalleEtb[0].idSalle; // set first as selected
-  //           });
-  // }
-
-  // addCategoryToSelected(value){
-  //   this.salle = this.allSalleEtb.find(salle => salle.idSalle == value); // find selected object by finding in original data by ID
-  // }
-
 
 }
