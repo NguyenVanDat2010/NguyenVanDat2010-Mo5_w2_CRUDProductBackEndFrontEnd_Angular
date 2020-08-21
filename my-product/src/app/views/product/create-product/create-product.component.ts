@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/container/service/product/product.service';
 import { CategoryService } from 'src/app/container/service/category/category.service';
 import { FormControlName, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-product',
@@ -11,7 +12,9 @@ import { FormControlName, FormGroup, FormBuilder, Validators } from '@angular/fo
 export class CreateProductComponent implements OnInit {
 
   constructor(private productService: ProductService,
-             private fb: FormBuilder, private categoryService: CategoryService) { }
+              private fb: FormBuilder,
+              private categoryService: CategoryService,
+              private route: Router) { }
   categories: any;
   createProductForm: FormGroup;
 
@@ -44,7 +47,7 @@ export class CreateProductComponent implements OnInit {
     let data = this.createProductForm.value;
     console.log(data)
       this.productService.createProduct(data).subscribe(res =>{
-        console.log(res)
+        this.route.navigate(['/products'])
       })
   }
 

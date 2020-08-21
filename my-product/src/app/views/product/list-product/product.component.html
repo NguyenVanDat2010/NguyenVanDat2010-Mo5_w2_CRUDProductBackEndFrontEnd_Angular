@@ -1,6 +1,7 @@
 <nav>
-  <a [routerLink] = "['/products/create']">Create</a> |
-  <a [routerLink] = "['/products/detail']">Detail</a>
+  <a [routerLink] = "['/products/create']">Create</a>
+  <!-- <a [routerLink] = "['/products/edit']">Edit</a> | -->
+  <!-- <a [routerLink] = "['/products/detail']">Detail</a> -->
 </nav>
 <div class="container">
   <div class="row">
@@ -16,6 +17,7 @@
             <th scope="col">Category</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
+            <th scope="col">Detail</th>
           </tr>
         </thead>
         <tbody>
@@ -23,10 +25,12 @@
             <th scope="row">{{item.id}}</th>
             <td>{{item.name}}</td>
             <td>{{item.quantity}}</td>
-            <td>{{item.price}}</td>
+            <td>{{item.price | number}}</td>
             <td>{{item.category.name}}</td>
-            <td><button class="btn btn-primary" [value] = "item.id">Edit</button></td>
-            <td><button class="btn btn-danger" [value] = "item.id" (click) = "deleteProduct(item.id)">Delete</button></td>
+            <td><button class="btn btn-secondary" [routerLink] = "['/products',item.id]" (click)="showEditProductForm(item.id)">Edit</button></td>
+            <!-- <app-edit-product [idProduct]= "item.id"></app-edit-product> -->
+            <td><button class="btn btn-danger" (click) = "deleteProduct(item.id)">Delete</button></td>
+            <td><button class="btn btn-info" [routerLink] = "['/products', item.id]">Detail</button></td>
           </tr>
         </tbody>
       </table>

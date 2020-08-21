@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
@@ -38,6 +39,24 @@ public class ProductController {
         }
         productService.save(product);
         return new ResponseEntity<>( HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Product>> getProductById(@PathVariable("id") Long id){
+        Optional<Product> product = productService.findById(id);
+        if (product.isPresent()){
+            return new ResponseEntity<>(product,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> editProduct(@RequestBody Product product){
+        if (product == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        productService.save(product);
+        return new ResponseEntity<>(product,HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

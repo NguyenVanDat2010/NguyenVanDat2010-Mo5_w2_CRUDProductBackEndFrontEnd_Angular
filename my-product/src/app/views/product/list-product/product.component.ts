@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProduct();
+
   }
 
   getAllProduct = () => {
@@ -27,10 +28,12 @@ export class ProductComponent implements OnInit {
   }
 
   deleteProduct(id:number){
-    this.productService.deleteProduct(id).subscribe(res =>{
-      this.getAllProduct();
-      console.log(res);
-    })
+    if(confirm('Are you sure?')) {
+      this.productService.deleteProductById(id).subscribe(res =>{
+        this.getAllProduct();
+        console.log(res);
+      })
+    }
   }
 
 }

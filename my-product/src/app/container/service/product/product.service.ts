@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
+
   constructor(public http: HttpClient) { }
 
   getAllProduct = (): Promise<Object> =>{
@@ -21,11 +22,19 @@ export class ProductService {
   }
 
   createProduct(data: any): Observable<any> {
-    return this.http.post<any>(environment.URL + '/products/create', data)
+    return this.http.post<any>(environment.URL + '/products/create', data);
   }
 
-  deleteProduct(id: number): Observable<any>{
-    return this.http.delete<any>(environment.URL+"/products/"+id);
+  getProductById(id: number): Observable<any> {
+    return this.http.get(environment.URL+"/products/" + id);
+  }
+
+  editProductById(data: any, id: number): Observable<any> {
+    return this.http.put<any>(environment.URL + "/products/" + id, data);
+  }
+
+  deleteProductById(id: number): Observable<any>{
+    return this.http.delete<any>(environment.URL + "/products/" + id);
   }
 
 }
