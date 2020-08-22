@@ -28,8 +28,7 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Category>> getCategoryById(@PathVariable Long id){
-        Optional<Category> category;
-        category = categoryService.findById(id);
+        Optional<Category> category = categoryService.findById(id);
         if (category.isPresent()){
             return new ResponseEntity<>(category,HttpStatus.OK);
         }
