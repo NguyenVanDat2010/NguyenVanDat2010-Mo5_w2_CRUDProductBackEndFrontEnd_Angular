@@ -47,6 +47,7 @@ export class CreateProductComponent implements OnInit {
     let data = this.createProductForm.value;
     // console.log(data)
       this.productService.createProduct(data).subscribe(res =>{
+        window.alert("Create product success!")
         this.route.navigate(['/products'])
       })
   }

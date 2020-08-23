@@ -24,10 +24,10 @@
             <td scope="row">{{item.quantity}}</td>
             <td scope="row">{{item.price | number}}</td>
             <td scope="row">{{item.category.name}}</td>
-            <td scope="row"><button class="btn btn-secondary" [routerLink] = "['/products/edit',item.id]" >Edit</button></td>
+            <td scope="row"><button class="btn btn-square btn-secondary btn-sm" [routerLink] = "['/products/edit',item.id]" >Edit</button></td>
             <!-- <app-edit-product [idProduct]= "item.id"></app-edit-product> -->
-            <td><button class="btn btn-danger" (click) = "deleteProduct(item.id)">Delete</button></td>
-            <td><button class="btn btn-info" [routerLink] = "['/products/detail', item.id]">Detail</button></td>
+            <td><button class="btn btn-square btn-danger btn-sm" (click) = "deleteProduct(item.id)">Delete</button></td>
+            <td><button class="btn btn-square btn-info btn-sm" [routerLink] = "['/products/detail', item.id]">Detail</button></td>
           </tr>
         </tbody>
       </table>

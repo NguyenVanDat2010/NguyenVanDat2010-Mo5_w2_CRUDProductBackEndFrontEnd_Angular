@@ -14,7 +14,7 @@ export class EditProductComponent implements OnInit {
   categories: any;
   editProductForm: FormGroup;
 
-  //lấy idProduct từ link bằng sub: Subscribe
+  //lấy idProduct từ link
   idProduct = +this.activateRouter.snapshot.paramMap.get('id');
 
   constructor(private productService: ProductService,
@@ -47,6 +47,7 @@ export class EditProductComponent implements OnInit {
   editProduct(){
     let data = this.editProductForm.value;
     this.productService.editProductById(data, this.idProduct).subscribe(res =>{
+      window.alert("Edit product success!")
       this.route.navigate(['/products']);
     })
   }
