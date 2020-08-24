@@ -2,32 +2,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h2 style="float: left;">List product</h2>
-      <button style="float: right;" class="btn btn-primary" [routerLink] = "['/products/create']"><h5>Create</h5></button>
-      <table class="table">
+      <h4 style="float: left;">List product</h4>
+      <button style="float: right;" class="btn btn-primary btn-sm" [routerLink] = "['/products/create']">Create</button>
+      <table class="table table-active table-hover">
         <thead>
           <tr>
-            <th scope="col">Id</th>
+            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
             <th scope="col">Category</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Detail</th>
+            <!-- <th scope="col">Edit</th>
+            <th scope="col">Delete</th> -->
+            <!-- <th scope="col">Detail</th> -->
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of products">
-            <th scope="row">{{item.id}}</th>
-            <td scope="row">{{item.name}}</td>
+          <tr *ngFor="let item of products let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td scope="row"><a style="text-decoration: none;" [routerLink] = "['/products/detail', item.id]">{{item.name}}</a></td>
             <td scope="row">{{item.quantity}}</td>
             <td scope="row">{{item.price | number}}</td>
             <td scope="row">{{item.category.name}}</td>
-            <td scope="row"><button class="btn btn-square btn-secondary btn-sm" [routerLink] = "['/products/edit',item.id]" >Edit</button></td>
-            <!-- <app-edit-product [idProduct]= "item.id"></app-edit-product> -->
+            <td scope="row"><button class="btn btn-square btn-success btn-sm" [routerLink] = "['/products/edit',item.id]" >Edit</button></td>
             <td><button class="btn btn-square btn-danger btn-sm" (click) = "deleteProduct(item.id)">Delete</button></td>
-            <td><button class="btn btn-square btn-info btn-sm" [routerLink] = "['/products/detail', item.id]">Detail</button></td>
+            <!-- <td><button class="btn btn-square btn-info btn-sm" [routerLink] = "['/products/detail', item.id]">Detail</button></td> -->
           </tr>
         </tbody>
       </table>
